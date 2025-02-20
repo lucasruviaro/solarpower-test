@@ -54,7 +54,7 @@ const NovaIndicacaoScreen = () => {
   }, []);
 
   const handleSalvar = (indicacao) => {
-    fetch('http://localhost:8080/api/indicacoes/salvar', {
+    fetch('http://localhost:8080/api/indicacoes/salvarIndicacao', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
