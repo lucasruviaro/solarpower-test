@@ -15,7 +15,7 @@ const NovaIndicacaoScreen = () => {
         if (storedToken) {
           setToken(storedToken);
 
-          fetch('http://localhost:8080/api/usuario-sessao', {
+          fetch('http://localhost:8080/api/indicacao/usuario-sessao', {
             headers: {
               'Authorization': `Bearer ${storedToken}`
             }
@@ -26,7 +26,7 @@ const NovaIndicacaoScreen = () => {
           })
           .catch(error => console.error("Erro ao buscar usuário da sessão:", error));
 
-          fetch('http://localhost:8080/api/usuarios', {
+          fetch('http://localhost:8080/api/indicacao/usuarios', {
             headers: {
               'Authorization': `Bearer ${storedToken}`
             }
@@ -38,7 +38,7 @@ const NovaIndicacaoScreen = () => {
           })
           .catch(error => console.error("Erro ao buscar usuários:", error));
 
-          fetch('http://localhost:8080/api/produtos', {
+          fetch('http://localhost:8080/api/indicacao/buscarProdutos', {
             headers: {
               'Authorization': `Bearer ${storedToken}`
             }
@@ -54,12 +54,7 @@ const NovaIndicacaoScreen = () => {
   }, []);
 
   const handleSalvar = (indicacao) => {
-    if (!usuarioIndicador) {
-      alert("Usuário indicador não encontrado. Verifique sua sessão.");
-      return;
-    }
-
-    fetch('http://localhost:8080/api/indicacoes', {
+    fetch('http://localhost:8080/api/indicacoes/salvar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
