@@ -5,6 +5,12 @@ public class IndicacaoController {
     @Autowired
     private IndicacaoService indicacaoService;
 
+    @GetMapping("/usuario-sessao")
+    public Usuario getUsuarioSessao(Principal principal) {
+        String username = principal.getName();
+        return usuarioRepository.findByEmail(username);
+    }
+
     @PostMapping
     public ResponseEntity<?> salvarIndicacao(@RequestBody IndicacaoDTO indicacaoDTO) {
         try {
