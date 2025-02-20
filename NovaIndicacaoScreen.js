@@ -62,7 +62,10 @@ const NovaIndicacaoScreen = () => {
       },
       body: JSON.stringify({
         usuarioIndicador: usuarioIndicador,
-        ...indicacao,
+        nomeIndicado: nomeIndicado,
+        emailIndicado: emailIndicado,
+        telefoneIndicado: telefoneIndicado,
+        produtoIndicado: produtoIndicado,
       })
     })
     .then(response => {
