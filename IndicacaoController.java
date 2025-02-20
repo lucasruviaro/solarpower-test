@@ -7,8 +7,13 @@ public class IndicacaoController {
 
     @GetMapping("/usuario-sessao")
     public Usuario getUsuarioSessao(Principal principal) {
-        String username = principal.getName();
-        return usuarioRepository.findByEmail(username);
+        String username = principal.getUsername();
+        return usuarioRepository.findByUsername(username);
+    }
+
+    @GetMapping("/usuarios")
+    public Usuario getUsuarios() {
+        return usuarioRepository.findAll();
     }
 
     @PostMapping
