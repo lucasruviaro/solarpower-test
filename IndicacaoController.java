@@ -25,6 +25,8 @@ public class IndicacaoController {
     public ResponseEntity<?> salvarIndicacao(@RequestBody IndicacaoDTO indicacaoDTO) {
         try {
             Indicacao indicacao = new Indicacao();
+            //no construtor do Indicacao já poderia ser setado o status de pendente para toda indicação nova
+            indicacao.setStatus(Status.PENDENTE)
             indicacaoService.salvarIndicacao(indicacao);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
