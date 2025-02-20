@@ -16,6 +16,11 @@ public class IndicacaoController {
         return usuarioRepository.findAll();
     }
 
+    @GetMapping("/produtos")
+    public List<Produto> buscarProdutos() {
+        return produtoService.buscarProdutos();
+    }
+
     @PostMapping
     public ResponseEntity<?> salvarIndicacao(@RequestBody IndicacaoDTO indicacaoDTO) {
         try {
