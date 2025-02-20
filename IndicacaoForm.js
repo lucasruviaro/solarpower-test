@@ -1,24 +1,19 @@
-import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import UsuarioSelector from './UsuarioSelector';
-import ProdutoSelector from './ProdutoSelector';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet, Picker } from 'react-native';
 
 const IndicacaoForm = ({ usuarios, produtos, onSalvar }) => {
   const [usuarioIndicado, setUsuarioIndicado] = useState('');
+  const [produtoIndicado, setProdutoIndicado] = useState('');
 
   const handleSubmit = () => {
     onSalvar({
-      usuarioIndicador: usuarioIndicadorSelecionado,
       usuarioIndicado,
-      produtoIndicado: produtoIndicadoSelecionado,
+      produtoIndicado,
     });
   };
 
   return (
     <View style={styles.container}>
-      <Text>Usuário Indicador:</Text>
-      <UsuarioSelector usuarios={usuarios} onSelect={setUsuarioIndicadorSelecionado} />
-
       <Text>Usuário Indicado:</Text>
       <TextInput
         style={styles.input}
@@ -27,7 +22,15 @@ const IndicacaoForm = ({ usuarios, produtos, onSalvar }) => {
       />
 
       <Text>Produto Indicado:</Text>
-      <ProdutoSelector produtos={produtos} onSelect={setProdutoIndicadoSelecionado} />
+      <Picker
+        selectedValue={produtoIndicado}
+        style={styles.picker}
+        onValueChange={(itemValue) => setProdutoIndicado(itemValue)}
+      >
+        {produtos.map(produto => (
+          <Picker.Item key={produto.id} label={produto.nome} value={produto.id} />
+        ))}
+      </Picker>
 
       <Button title="Salvar" onPress={handleSubmit} />
     </View>
