@@ -11,11 +11,6 @@ public class IndicacaoController {
         return usuarioRepository.findByUsername(username);
     }
 
-    @GetMapping("/usuarios")
-    public Usuario getUsuarios() {
-        return usuarioRepository.findAll();
-    }
-
     @GetMapping("/produtos")
     public List<Produto> buscarProdutos() {
         return produtoService.buscarProdutos();
