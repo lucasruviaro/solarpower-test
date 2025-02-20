@@ -26,18 +26,6 @@ const NovaIndicacaoScreen = () => {
           })
           .catch(error => console.error("Erro ao buscar usuário da sessão:", error));
 
-          fetch('http://localhost:8080/api/indicacao/usuarios', {
-            headers: {
-              'Authorization': `Bearer ${storedToken}`
-            }
-          })
-          .then(response => response.json())
-          .then(data => {
-            const outrosUsuarios = data.filter(user => user.id !== usuarioIndicador);
-            setUsuarios(outrosUsuarios);
-          })
-          .catch(error => console.error("Erro ao buscar usuários:", error));
-
           fetch('http://localhost:8080/api/indicacao/buscarProdutos', {
             headers: {
               'Authorization': `Bearer ${storedToken}`
